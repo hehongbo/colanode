@@ -7,6 +7,7 @@ import { aiConfigSchema } from './ai';
 import { corsSchema } from './cors';
 import { emailConfigSchema } from './email';
 import { jobsConfigSchema } from './jobs';
+import { listenConfigSchema } from './listen';
 import { loggingConfigSchema } from './logging';
 import { postgresConfigSchema } from './postgres';
 import { redisConfigSchema } from './redis';
@@ -22,6 +23,7 @@ const serverModeSchema = z.enum(['standalone', 'cluster']);
 const configSchema = z.object({
   name: z.string().default('Colanode Server').transform(resolveConfigReference),
   avatar: z.string().optional().transform(resolveOptionalConfigReference),
+  listen: listenConfigSchema,
   web: z
     .object({
       domain: z.string().transform(resolveConfigReference),
