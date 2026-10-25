@@ -84,6 +84,8 @@ navigator.locks.request('colanode', async () => {
     await app.createServer(new URL('https://us.colanode.com/config'));
   }
 
+  await app.createServer(new URL('https://colanode.example.com/config'));
+
   appInitOutput = 'success';
 
   broadcastMessage({
